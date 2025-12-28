@@ -45,13 +45,43 @@
             transform: rotate(-2deg); /* Constant slight tilt */
         }
 
-        h1 {
-        font-size: clamp(3rem, 10vw, 6rem);
-        color: var(--white);
-        -webkit-text-stroke: 3px var(--dark-sage);
-        text-shadow: 8px 8px 0px var(--dark-sage); 
-        text-transform: lowercase;
-        letter-spacing: -2px;
+       .scramble-container {
+            cursor: default;
+            display: inline-block;
+            perspective: 1000px;
+        }
+
+        h1 span {
+            display: inline-block;
+            font-size: clamp(3rem, 10vw, 5rem);
+            color: var(--white);
+            -webkit-text-stroke: 6px var(--dark-sage);
+            paint-order: stroke fill;
+            text-shadow: 6px 6px 0px var(--dark-sage);
+            transition: all 0.1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            text-transform: lowercase;
+        }
+
+        /* The "Scramble" effect on hover */
+        h1 span:hover {
+            color: var(--clay);
+            transform: translateY(-20px) rotate(15deg) scale(1.2);
+            text-shadow: 0px 20px 0px rgba(61, 79, 49, 0.2);
+            cursor: pointer;
+        }
+
+        /* Special styling for the space so it doesn't bounce weirdly */
+        .space {
+            width: 20px;
+        }
+
+        /* Add a little wiggle to every second letter by default for extra quirk */
+        h1 span:nth-child(even) {
+            transform: rotate(-3deg);
+        }
+
+        h1 span:nth-child(odd) {
+            transform: rotate(3deg);
         }
 
         .tagline {
@@ -211,10 +241,15 @@
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>ella ilan</h1>
-        </header>
+    <header>
+    <h1 id="name-header" class="scramble-container">
+        <span>e</span><span>l</span><span>l</span><span>a</span>
+        <span class="space">&nbsp;</span>
+        <span>i</span><span>l</span><span>a</span><span>n</span>
+    </h1>
+    <br>
+    <div class="tagline">data science + economics @ ubc</div>
+</header>
 
         <main class="card">
             <h2>hello there! 🌿</h2>

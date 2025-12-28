@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ella Ilan | Portfolio</title>
+    <title>ella ilan</title>
     <style>
         :root {
             --sage: #9CAF88;
@@ -49,7 +49,6 @@
         font-size: clamp(3rem, 10vw, 6rem);
         color: var(--white);
         -webkit-text-stroke: 3px var(--dark-sage);
-        /* Changed from --clay to --dark-sage for a cleaner, monochromatic look */
         text-shadow: 8px 8px 0px var(--dark-sage); 
         text-transform: lowercase;
         letter-spacing: -2px;
@@ -71,14 +70,27 @@
             padding: 3rem;
             border: 6px solid var(--dark-sage); /* Extra thick borders */
             border-radius: 60px 15px 100px 20px;
-            box-shadow: 15px 15px 0px var(--black);
+            box-shadow: 15px 15px 0px var(--dark-sage);
             position: relative;
         }
 
-        h2 {
-            font-size: 2.5rem;
-            color: var(--dark-sage);
-            margin-bottom: 1.5rem;
+        .projects-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .projects-header span {
+            background: var(--dark-sage);
+            color: var(--white);
+            font-size: 2.5rem; 
+            padding: 4px 14px;
+            text-transform: lowercase;
+            border: 3px solid var(--black); 
+            box-shadow: 4px 4px 0px var(--black);
+            transform: rotate(-1deg);
+            letter-spacing: -0.5px;
         }
 
         p {
@@ -127,6 +139,13 @@
             align-items: center;
             justify-content: center;
             font-size: 3.5rem;
+        }
+
+        .project-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* This crops the image to fill the space without stretching */
+            display: block;
         }
 
         .project-card h3 {
@@ -210,16 +229,24 @@
         </main>
 
         <section id="projects">
-    <h2 style="text-align: center; color: white; -webkit-text-stroke: 2px var(--dark-sage); font-size: 3rem; margin-bottom: 3rem;">
-        current projects
-    </h2>
+    <section id="projects">
+    <div class="projects-header">
+        <span>current projects</span>
+    </div>
+    
+    <div class="projects-grid">
+        </div>
+</section>
+
     <div class="projects-grid">
         
         <a href="https://www.instagram.com/widsubc/" target="_blank" class="project-link">
             <article class="project-card" style="transform: rotate(-1.5deg);">
-                <div class="project-img-placeholder">📸</div>
+                <div class="project-img-placeholder">
+            <img src="widsfeed.png" alt="WIDS UBC Instagram Screenshot" class="project-img">
+                </div>
                 <h3>wids-stagram</h3>
-                <p>> designing cute posts and connecting with women in data science at ubc <3</p>
+                <p>> designing cute posts and connecting with women in data science at ubc <3 </p>
             </article>
         </a>
 
@@ -231,6 +258,16 @@
                 <p>> analyzing student engagement + uncovering insights about the ubc student experience</p>
             </article>
         </a>
+
+        <a href="https://github.com/ellailan/rise-and-decide" target="_blank" class="project-link">
+    <article class="project-card" style="transform: rotate(-0.5deg);">
+        <div class="project-img-placeholder">
+            <img src="riseanddecide.png" alt="Rise and Decide Project Screenshot" class="project-img">
+        </div>
+        <h3>rise-and-decide</h3>
+        <p>> a decision-making tool built using ai tools as part of a two-hour hackathon</p>
+    </article>
+</a>
 
     </div>
 </section>

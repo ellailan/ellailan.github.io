@@ -5,224 +5,265 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ella Ilan | Portfolio</title>
     <style>
-        /* CSS Variables for easy customization */
         :root {
-        --sage: #9CAF88;
-        --dark-sage: #5e6d4e; 
-        --cream: #F9F7F0;
-        --clay: #D68C7A;
-        --charcoal: #333333;
-        --white: #ffffff;
+            --sage: #9CAF88;
+            --dark-sage: #3D4F31; 
+            --cream: #F9F7F0;
+            --clay: #D68C7A;
+            --white: #ffffff;
+            --black: #2A2A2A;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Using a bold, chunky font stack */
+            font-family: 'Arial Black', 'Gadget', sans-serif;
         }
 
         body {
-            background: linear-gradient(135deg, #9CAF88 0%, #b8c9a7 100%);
+            background: var(--sage);
+            background-image: radial-gradient(var(--white) 1px, transparent 1px);
+            background-size: 30px 30px; 
             min-height: 100vh;
-            line-height: 1.6;
-            overflow-x: hidden;
+            line-height: 1.4;
+            padding: 2rem 1rem;
         }
 
-        /* Quirky Floating Shapes Background */
-        .blob {
-            position: absolute;
-        background: var(--cream); 
-        filter: blur(60px);
-        z-index: -1;
-        opacity: 0.4;
-        border-radius: 50%;
-        }
-
-        /* Layout Container */
         .container {
-            max-width: 900px;
+            max-width: 850px;
             margin: 0 auto;
-            padding: 2rem;
-            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            gap: 5rem;
         }
 
-        /* Header Section */
+        /* BOLD HEADER */
         header {
             text-align: center;
-            margin-bottom: 3rem;
+            transform: rotate(-2deg); /* Constant slight tilt */
         }
 
         h1 {
-            font-size: 4rem;
-            color: var(--dark-sage);
-            margin-bottom: 0.5rem;
-            display: inline-block;
-            position: relative;
-        }
-
-        /* The underline */
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            left: 0;
-            width: 100%;
-            height: 15px;
-            background: var(--clay);
-            z-index: -1;
-            transform: rotate(-2deg);
-            border-radius: 50% 20%;
+        font-size: clamp(3rem, 10vw, 6rem);
+        color: var(--white);
+        -webkit-text-stroke: 3px var(--dark-sage);
+        /* Changed from --clay to --dark-sage for a cleaner, monochromatic look */
+        text-shadow: 8px 8px 0px var(--dark-sage); 
+        text-transform: lowercase;
+        letter-spacing: -2px;
         }
 
         .tagline {
-            font-style: italic;
+            background: var(--dark-sage);
+            color: var(--cream);
+            display: inline-block;
+            padding: 5px 15px;
             font-size: 1.2rem;
-            color: var(--charcoal);
+            margin-top: 10px;
+            transform: rotate(3deg);
         }
 
-        /* Profile Card */
+        /* CHUNKY CARD */
         .card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 40px 10px 40px 10px; /* Quirky asymmetrical corners */
-            border: 3px solid var(--sage);
-            box-shadow: 10px 10px 0px var(--sage);
-            transition: transform 0.3s ease;
+            background: var(--cream);
+            padding: 3rem;
+            border: 6px solid var(--dark-sage); /* Extra thick borders */
+            border-radius: 60px 15px 100px 20px;
+            box-shadow: 15px 15px 0px var(--black);
+            position: relative;
         }
 
-        .card:hover {
-            transform: translate(-5px, -5px);
-            box-shadow: 15px 15px 0px var(--sage);
+        h2 {
+            font-size: 2.5rem;
+            color: var(--dark-sage);
+            margin-bottom: 1.5rem;
         }
 
-        /* Links & Buttons */
+        p {
+            font-family: 'Courier New', Courier, monospace; /* Quirky contrast font */
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--black);
+            margin-bottom: 1rem;
+        }
+
+        /* PROJECT GRID */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .project-link {
+            text-decoration: none; /* Removes underline from the link */
+            color: inherit;
+            display: block;
+        }
+
+        .project-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border: 6px solid var(--dark-sage); /* Bold borders */
+            box-shadow: 12px 12px 0px var(--dark-sage); /* Clean dark sage shadow */
+            transition: all 0.2s ease-in-out;
+            height: 100%;
+        }
+
+        .project-link:hover .project-card {
+            transform: translate(-4px, -4px);
+            box-shadow: 18px 18px 0px var(--dark-sage);
+            background-color: var(--cream); /* Slight color shift on hover */
+        }
+
+        .project-img-placeholder {
+            width: 100%;
+            height: 180px;
+            background: var(--sage);
+            border: 4px solid var(--dark-sage);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+        }
+
+        .project-card h3 {
+            text-transform: uppercase;
+            font-size: 1.5rem;
+            background: var(--dark-sage);
+            color: var(--white);
+            display: inline-block;
+            padding: 2px 12px;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .project-card p {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--dark-sage);
+        }
+
+        /* BUTTONS */
         .links {
             margin-top: 2rem;
             display: flex;
-            gap: 1.5rem;
-            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
         .btn {
             text-decoration: none;
-            color: white;
-            background: var(--dark-sage);
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
+            color: var(--white);
+            background: var(--black);
+            padding: 1rem 2rem;
+            border: 4px solid var(--dark-sage);
+            font-size: 1.1rem;
+            /* Match the shadow here too */
+            box-shadow: 5px 5px 0px var(--dark-sage);
+            transition: 0.1s;
         }
 
         .btn:hover {
-            background: var(--cream);
-            color: var(--dark-sage);
-            border: 2px solid var(--dark-sage);
+            transform: translate(3px, 3px);
+            box-shadow: 0px 0px 0px var(--clay);
         }
 
-        .btn.github {
-            background: var(--clay);
-        }
-
-        .btn.github:hover {
-            background: var(--cream);
-            color: var(--clay);
-            border: 2px solid var(--clay);
-        }
-
-        /* Interaction feedback */
+        /* INTERACTIVE */
         #interactive-area {
-            margin-top: 3rem;
             text-align: center;
-            cursor: pointer;
-            user-select: none;
         }
 
         .wiggle {
+            font-size: 5rem;
+            cursor: pointer;
             display: inline-block;
-            font-size: 2rem;
-            transition: transform 0.2s;
+            filter: drop-shadow(5px 5px 0px var(--dark-sage));
         }
 
         @media (max-width: 600px) {
-            h1 { font-size: 2.5rem; }
-            .links { flex-direction: column; align-items: center; }
+            .card { padding: 1.5rem; border-radius: 20px; }
+            h1 { font-size: 3rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="blob" style="width: 300px; height: 300px; top: -50px; right: -50px;"></div>
-    <div class="blob" style="width: 200px; height: 200px; bottom: 50px; left: -50px; background: var(--clay);"></div>
-
     <div class="container">
         <header>
-            <h1 id="name-header">ella ilan</h1>
-            <p class="tagline"></p>
+            <h1>ella ilan</h1>
         </header>
 
         <main class="card">
-            <h2>hi there 🌿</h2>
-            <p>i'm ella, a student at the univeristy of british columbia studying data science and economics.</p>
-            <p>welcome to my corner of the internet!</p>
+            <h2>hello there! 🌿</h2>
+            <p>> i'm a student at the university of british columbia.</p>
+            <p>> i'm majoring in data science with a minor in economics!</p>
+            <p>> welcome to my corner of the web.</p>
             
             <div class="links">
-                <a href="https://www.linkedin.com/in/ellailan/" target="_blank" class="btn">LinkedIn</a>
-                <a href="https://github.com/ellailan" target="_blank" class="btn github">GitHub</a>
+                <a href="https://www.linkedin.com/in/ellailan/" target="_blank" class="btn">LINKEDIN</a>
+                <a href="https://github.com/ellailan" target="_blank" class="btn" style="background: var(--clay);">GITHUB</a>
             </div>
         </main>
 
+        <section id="projects">
+    <h2 style="text-align: center; color: white; -webkit-text-stroke: 2px var(--dark-sage); font-size: 3rem; margin-bottom: 3rem;">
+        current projects
+    </h2>
+    <div class="projects-grid">
+        
+        <a href="https://www.instagram.com/widsubc/" target="_blank" class="project-link">
+            <article class="project-card" style="transform: rotate(-1.5deg);">
+                <div class="project-img-placeholder">📸</div>
+                <h3>WIDS@UBC instagram</h3>
+                <p>> managing community engagement and digital presence for women in data science at ubc.</p>
+            </article>
+        </a>
+
+        <a href="https://github.com/ellailan/student-engagement-survey" target="_blank" class="project-link">
+            <article class="project-card" style="transform: rotate(1.5deg);">
+                <div class="project-img-placeholder">📝</div>
+                <h3>ubc student survey</h3>
+                <p>> analyzing student engagement data to uncover insights into the ubc campus experience.</p>
+            </article>
+        </a>
+
+    </div>
+</section>
+
         <div id="interactive-area">
-            <span class="wiggle">🌱</span>
-            <p style="font-size: 0.8rem; color: var(--dark-sage);">click here!</p>
+            <div class="wiggle" id="sprout">🌱</div>
+            <p style="font-family: monospace; color: var(--dark-sage); font-weight: bold; margin-top: 20px;">[ CLICK THE SPROUT ]</p>
         </div>
     </div>
 
     <script>
-        // Quirky interactivity: The Sprout Clicker
-        const sprout = document.querySelector('.wiggle');
-        const container = document.querySelector('.container');
-        const emojis = ['🌿', '🍃', '✨', '🌻', '🍵'];
+        const sprout = document.getElementById('sprout');
+        const emojis = ['🥗', '🍏', '🧪', '📉', '🎋', '🥑'];
 
         sprout.addEventListener('click', () => {
-            // Wiggle animation
-            sprout.style.transform = 'scale(1.5) rotate(20deg)';
-            setTimeout(() => sprout.style.transform = 'scale(1) rotate(0deg)', 200);
-
-            // Spawn a random emoji
+            // Chaotic wiggle
+            sprout.style.transform = `scale(1.3) rotate(${Math.random() * 40 - 20}deg)`;
+            
             const leaf = document.createElement('span');
             leaf.innerText = emojis[Math.floor(Math.random() * emojis.length)];
             leaf.style.position = 'fixed';
             leaf.style.left = Math.random() * 100 + 'vw';
             leaf.style.top = '100vh';
-            leaf.style.fontSize = '2rem';
-            leaf.style.transition = 'all 2s linear';
-            leaf.style.zIndex = '100';
-            
+            leaf.style.fontSize = '3rem';
+            leaf.style.transition = 'all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            leaf.style.zIndex = '1000';
             document.body.appendChild(leaf);
 
-            // Animate it floating up
             setTimeout(() => {
                 leaf.style.top = '-10vh';
-                leaf.style.transform = `translateX(${(Math.random() - 0.5) * 200}px) rotate(360deg)`;
-                leaf.style.opacity = '0';
-            }, 100);
+                leaf.style.transform = `rotate(${Math.random() * 720}deg)`;
+            }, 50);
 
-            // Cleanup
-            setTimeout(() => leaf.remove(), 2100);
-        });
-
-        // Hover effect on the name
-        const nameHeader = document.getElementById('name-header');
-        nameHeader.addEventListener('mouseover', () => {
-            nameHeader.style.transform = 'skewX(-5deg)';
-        });
-        nameHeader.addEventListener('mouseout', () => {
-            nameHeader.style.transform = 'skewX(0deg)';
+            setTimeout(() => leaf.remove(), 2000);
         });
     </script>
 </body>

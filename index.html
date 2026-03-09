@@ -1,623 +1,382 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ella ilan</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌿</text></svg>">
-
-    <style>
-        :root {
-            --sage: #9CAF88;
-            --dark-sage: #3D4F31; 
-            --cream: #F9F7F0;
-            --clay: #e08b8e;
-            --white: #ffffff;
-            --black: #2A2A2A;
-            --light-sage: #bdd1a7;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            /* Using a bold, chunky font stack */
-            font-family: 'Arial Black', 'Gadget', sans-serif;
-        }
-
-body {
-    /* Base color + subtle vertical fade */
-    background-color: var(--sage);
-    background-image: 
-        radial-gradient(var(--light-sage) 2px, transparent 2px),
-        radial-gradient(rgba(255, 255, 255, 0.3) 2px, transparent 2px),
-        linear-gradient(180deg, var(--sage) 0%, #8da277 100%);
-    
-    /* This offsets the dots so they aren't in a perfect grid */
-    background-position: 0 0, 15px 15px, 0 0;
-    background-size: 30px 30px, 30px 30px, 100% 100%;
-    
-    min-height: 100vh;
-    line-height: 1.4;
-
-    /* MARGIN FOR THE WHOLE WEBSITE */
-    /* Increased top/bottom to 5rem and left/right to 10% for a "framed" look */
-    padding: 5rem 10%; 
-}
-
-.container {
-    /* Narrowing the container makes the side margins look much larger on desktop */
-    max-width: 800px; 
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 6rem; /* Increased gap between sections for more room */
-}
-
-/* For mobile phones, we decrease the margin slightly so it doesn't look too squished */
-@media (max-width: 600px) {
-    body {
-        padding: 2rem 5%;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ella ilan</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌿</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Abril+Fatface&family=Special+Elite&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --sage: #9CAF88;
+      --dark-sage: #3D4F31;
+      --cream: #F5F0E8;
+      --cream2: #EDE8DC;
+      --clay: #e08b8e;
+      --clay-light: #f5c8ca;
+      --mustard: #D4A843;
+      --white: #FDFCF8;
+      --black: #2A2A2A;
+      --light-sage: #C4D4B5;
+      --pale-sage: #E4EDD9;
     }
-}
-
-        /* BOLD HEADER */
-        header {
-            text-align: center;
-            transform: rotate(-2deg); /* Constant slight tilt */
-            margin-bottom: 2rem;
-        }
-
-       .scramble-container {
-            cursor: default;
-            display: inline-block;
-            perspective: 1000px;
-        }
-
-        h1 span {
-            display: inline-block;
-            font-size: clamp(4.5rem, 10vw, 5rem);
-            color: var(--white);
-            -webkit-text-stroke: 6px var(--dark-sage);
-            paint-order: stroke fill;
-            text-shadow: 6px 6px 0px var(--dark-sage);
-            transition: all 0.1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            
-        }
-
-        /* The "Scramble" effect on hover */
-        h1 span:hover {
-            color: var(--clay);
-            transform: translateY(-20px) rotate(15deg) scale(1.2);
-            text-shadow: 0px 20px 0px rgba(61, 79, 49, 0.2);
-            cursor: pointer;
-        }
-
-        /* Special styling for the space so it doesn't bounce weirdly */
-        .space {
-            width: 20px;
-        }
-
-        /* Add a little wiggle to every second letter by default for extra quirk */
-        h1 span:nth-child(even) {
-            transform: rotate(-3deg);
-        }
-
-        h1 span:nth-child(odd) {
-            transform: rotate(3deg);
-        }
-
-        .tagline {
-            background: var(--dark-sage);
-            color: var(--cream);
-            display: inline-block;
-            padding: 5px 15px;
-            font-size: 1.2rem;
-            margin-top: 10px;
-            transform: rotate(3deg);
-        }
-
-        /* CHUNKY CARD */
-        .card {
-            background: var(--cream);
-            padding: 3rem;
-            border: 6px solid var(--dark-sage); /* Extra thick borders */
-            border-radius: 60px 15px 100px 20px;
-            box-shadow: 15px 15px 0px var(--dark-sage);
-            position: relative;
-            margin-bottom: 4rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .projects-header {
-            text-align: center;
-            margin-bottom: 2rem;
-            display: flex;
-            justify-content: center;
-            margin-top: 4rem;
-        }
-
-        .projects-header span {
-            background: var(--dark-sage);
-            color: var(--white);
-            font-size: 2.5rem; 
-            padding: 4px 14px;
-            border: 3px solid var(--black); 
-            box-shadow: 4px 4px 0px var(--black);
-            transform: rotate(-1deg);
-            letter-spacing: -0.5px;
-        }
-
-        p {
-            font-family: 'Courier New', Courier, monospace; /* Quirky contrast font */
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: var(--black);
-            margin-bottom: 1rem;
-        }
-
-        /* PROJECT GRID */
-        .projects-grid {
-            display: grid;
-            /* Use auto-fill to prevent items from stretching to the full width */
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 3rem;
-            justify-content: center; /* Centers the cards in the row */
-        }
-
-        .project-link {
-            text-decoration: none; /* Removes underline from the link */
-            color: inherit;
-            display: block;
-        }
-
-        .project-card {
-            background: var(--white);
-            padding: 1.5rem;
-            border: 6px solid var(--dark-sage); /* Bold borders */
-            box-shadow: 12px 12px 0px var(--dark-sage); /* Clean dark sage shadow */
-            transition: all 0.2s ease-in-out;
-            height: 100%;
-        }
-
-        .project-link:hover .project-card {
-            transform: translate(-4px, -4px);
-            box-shadow: 18px 18px 0px var(--dark-sage);
-            background-color: var(--cream); /* Slight color shift on hover */
-        }
-
-        .project-img-placeholder {
-            width: 100%;
-            height: 180px;
-            background: var(--sage);
-            border: 4px solid var(--dark-sage);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-        }
-
-        .project-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* This crops the image to fill the space without stretching */
-            display: block;
-        }
-
-        .project-card h3 {
-            text-transform: uppercase;
-            font-size: 1.5rem;
-            background: var(--dark-sage);
-            color: var(--white);
-            display: inline-block;
-            padding: 2px 12px;
-            margin-bottom: 15px;
-            letter-spacing: -1px;
-        }
-
-        .project-card p {
-            font-family: 'Courier New', Courier, monospace;
-            font-weight: bold;
-            font-size: 1.1rem;
-            color: var(--dark-sage);
-        }
-
-        /* BUTTONS */
-        .links {
-            margin-top: 2rem;
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            text-decoration: none;
-            color: var(--white);
-            background: var(--black);
-            padding: 1rem 2rem;
-            border: 4px solid var(--dark-sage);
-            font-size: 1.1rem;
-            /* Match the shadow here too */
-            box-shadow: 5px 5px 0px var(--dark-sage);
-            transition: 0.1s;
-        }
-
-        .btn:hover {
-            transform: translate(3px, 3px);
-            box-shadow: 0px 0px 0px var(--clay);
-        }
-
-        /* INTERACTIVE */
-        #interactive-area {
-            text-align: center;
-        }
-
-        .wiggle {
-            font-size: 5rem;
-            cursor: pointer;
-            display: inline-block;
-            filter: drop-shadow(5px 5px 0px var(--dark-sage));
-        }
-
-        @media (max-width: 600px) {
-            .card { padding: 1.5rem; border-radius: 20px; }
-            h1 { font-size: 3rem; }
-        }
-
-        /* PORTFOLIO SECTION */
-
-.portfolio-grid {
-    display: grid;
-    /* Small Icons */
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 2.5rem;
-    margin-bottom: 5rem;
-    justify-content: center
-
-}
-
-.portfolio-wrapper {
-    display: block;
-    cursor: default; /* Removes the "hand" pointer since it's no longer a link */
-}
-
-.portfolio-item {
-    position: relative;
-    aspect-ratio: 4 / 5; /* Instagram Portrait */
-    border: 4px solid var(--dark-sage);
-    box-shadow: 8px 8px 0px var(--dark-sage);
-    overflow: hidden;
-    background: var(--dark-sage);
-    transition: all 0.2s ease;
-}
-
-/* Maintain the "Click" animation even without a link */
-.portfolio-wrapper:hover .portfolio-item {
-    transform: translate(-3px, -3px);
-    box-shadow: 12px 12px 0px var(--dark-sage);
-}
-
-.portfolio-wrapper:active .portfolio-item {
-    transform: translate(3px, 3px);
-    box-shadow: 2px 2px 0px var(--dark-sage);
-}
-
-.portfolio-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s ease;
-}
-
-/* OVERLAY */
-.portfolio-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(42, 42, 42, 0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.portfolio-wrapper:hover .portfolio-overlay {
-    opacity: 1;
-}
-
-.portfolio-wrapper:hover img {
-    transform: scale(1.1);
-}
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body { cursor: none; }
+    .cursor {
+      width:18px; height:18px;
+      border:2.5px solid var(--dark-sage);
+      border-radius:50%;
+      position:fixed; pointer-events:none; z-index:99999;
+      transform:translate(-50%,-50%);
+      transition:transform 0.08s, width 0.2s, height 0.2s, background 0.2s;
+      mix-blend-mode:multiply;
+    }
+    .cursor.hovering { width:36px; height:36px; background:rgba(224,139,142,0.3); }
+    body {
+      background-color:var(--cream);
+      color:var(--black);
+      font-family:'Special Elite', monospace;
+      overflow-x:hidden;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+    }
 
 
-.portfolio-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(42, 42, 42, 0.9); /* Dark background */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    text-align: center;
-    opacity: 0; /* Hidden */
-    transition: opacity 0.3s ease-in-out;
-    pointer-events: none; /* Allows clicks to pass through if needed */
-}
 
-/* SHOW OVERLAY ON HOVER */
-.portfolio-item:hover .portfolio-overlay {
-    opacity: 1; /* Fade in */
-}
+    /* HERO */
+    .hero { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:4rem 2rem 7rem; position:relative; overflow:hidden; }
+    .hero::before { content:''; position:absolute; inset:0; background-image:radial-gradient(var(--light-sage) 1.5px, transparent 1.5px); background-size:28px 28px; opacity:0.5; }
+    .hero::after { content:''; position:absolute; bottom:-2px; left:0; right:0; height:60px; background:var(--cream2); clip-path:polygon(0% 100%, 2% 40%, 4% 80%, 7% 20%, 9% 70%, 12% 30%, 14% 65%, 17% 10%, 19% 55%, 22% 85%, 25% 25%, 27% 60%, 30% 40%, 33% 75%, 36% 15%, 38% 50%, 41% 80%, 44% 35%, 46% 65%, 49% 20%, 52% 70%, 55% 30%, 57% 55%, 60% 85%, 63% 25%, 66% 60%, 68% 40%, 71% 75%, 74% 15%, 76% 50%, 79% 80%, 82% 35%, 85% 65%, 88% 20%, 90% 55%, 93% 85%, 96% 30%, 98% 60%, 100% 40%, 100% 100%); }
+    .hero-name { font-family:'Abril Fatface',serif; font-size:clamp(5rem,15vw,10rem); color:var(--dark-sage); line-height:0.88; text-align:center; position:relative; z-index:2; letter-spacing:-0.02em; }
+    .hero-name .last { color:var(--dark-sage); display:block; }
+    .hero-name .first { display:block; position:relative; }
+    .hero-tag { display:inline-block; background:var(--clay); color:var(--white); font-family:'Caveat',cursive; font-size:1.4rem; font-weight:700; padding:0.35rem 1.4rem; transform:rotate(-2.5deg); position:relative; z-index:3; margin-top:1.8rem; box-shadow:3px 3px 0 var(--dark-sage); }
+    .hero-sub { font-family:'DM Mono',monospace; font-size:0.78rem; color:var(--dark-sage); text-align:center; margin-top:1.4rem; letter-spacing:0.08em; position:relative; z-index:2; opacity:0.8; min-height:1.2em; }
+    .cursor-blink { display:inline-block; width:2px; height:1em; background:var(--clay); vertical-align:middle; animation:blink 1s step-end infinite; margin-left:2px; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .hero-links { display:flex; gap:1rem; margin-top:2.5rem; position:relative; z-index:2; flex-wrap:wrap; justify-content:center; }
+    .stamp-btn { font-family:'Special Elite',monospace; font-size:0.85rem; text-decoration:none; color:var(--dark-sage); border:2.5px solid var(--dark-sage); padding:0.6rem 1.6rem; background:var(--white); position:relative; transition:all 0.15s ease; letter-spacing:0.05em; text-transform:uppercase; cursor:none; }
+    .stamp-btn::before { content:''; position:absolute; inset:3px; border:1px dashed var(--dark-sage); opacity:0.4; pointer-events:none; }
+    .stamp-btn:hover { background:var(--dark-sage); color:var(--cream); transform:rotate(-1deg) scale(1.03); }
+    .stamp-btn.clay-btn { background:var(--clay); color:var(--white); border-color:var(--dark-sage); }
+    .stamp-btn.clay-btn:hover { background:#c97075; transform:rotate(1deg) scale(1.03); }
 
-/* TEXT INSIDE OVERLAY */
-.overlay-text h3 {
-    color: var(--clay);
-    font-size: 1rem;
-    margin-bottom: 5px;
-}
+    /* ABOUT */
+    .about-section { background:var(--cream2); padding:5rem 3rem 6rem; position:relative; border-top:3px dashed var(--light-sage); border-bottom:3px dashed var(--light-sage); }
+    .about-inner { max-width:860px; margin:0 auto; display:flex; flex-direction:column; align-items:center; text-align:center; }
+    .pinned-card { background:var(--white); padding:2.2rem; border:2px solid var(--black); box-shadow:6px 6px 0 var(--dark-sage); position:relative; transform:rotate(-1.5deg); max-width:520px; }
+    .fun-facts { display:none; }
+    .pin { position:absolute; top:-14px; left:50%; transform:translateX(-50%); width:22px; height:22px; background:var(--clay); border-radius:50%; border:2px solid var(--dark-sage); box-shadow:0 4px 6px rgba(0,0,0,0.2); z-index:2; }
+    .pin::after { content:''; position:absolute; bottom:-20px; left:50%; transform:translateX(-50%); width:2px; height:20px; background:linear-gradient(to bottom,var(--dark-sage),transparent); }
+    .card-label { font-family:'Caveat',cursive; font-size:0.85rem; color:var(--sage); margin-bottom:0.8rem; display:block; }
+    .card-body { font-family:'Caveat',cursive; font-size:1.25rem; color:var(--black); line-height:1.55; }
+    .card-body strong { color:var(--dark-sage); }
+    .card-body em { color:var(--clay); font-style:normal; text-decoration:underline wavy var(--clay-light); }
+    .pinned-card::before { content:''; position:absolute; inset:0; background:repeating-linear-gradient(to bottom,transparent 0px,transparent 27px,rgba(156,175,136,0.2) 27px,rgba(156,175,136,0.2) 28px); pointer-events:none; }
+    .section-label { display:inline-flex; align-items:center; gap:0.8rem; background:var(--dark-sage); color:var(--cream); font-family:'Caveat',cursive; font-size:1.8rem; font-weight:700; padding:0.3rem 1.5rem 0.3rem 1rem; margin-bottom:3rem; position:relative; transform:rotate(-1deg); box-shadow:4px 4px 0 var(--black); }
+    .section-label::before { content:'✦'; color:var(--clay); }
 
-.overlay-text p {
-    color: var(--cream);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.75rem;
-    line-height: 1.2;
-}
+    /* PROJECTS */
+    #projects { padding:5rem 3rem; max-width:1100px; margin:0 auto; }
+    .projects-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2.5rem; }
+    .project-link { text-decoration:none; color:inherit; display:block; cursor:none; }
+    .project-card { background:var(--white); border:2.5px solid var(--black); position:relative; transition:transform 0.2s ease, box-shadow 0.2s ease; box-shadow:5px 5px 0 var(--dark-sage); }
+    .project-link:nth-child(odd) .project-card { transform:rotate(-0.8deg); }
+    .project-link:nth-child(even) .project-card { transform:rotate(0.6deg); }
+    .project-link:hover .project-card { transform:rotate(0deg) translateY(-6px) !important; box-shadow:8px 12px 0 var(--dark-sage); z-index:2; }
+    .project-card::before,.project-card::after { content:''; position:absolute; width:60px; height:22px; background:rgba(245,200,202,0.85); z-index:1; }
+    .project-card::before { top:-8px; left:-8px; transform:rotate(-38deg); transform-origin: center center; }
+    .project-card::after { top:-8px; right:-8px; transform:rotate(38deg); transform-origin: center center; }
+    .project-img-wrap { width:100%; aspect-ratio:16/9; overflow:hidden; border-bottom:2.5px solid var(--black); background:var(--pale-sage); }
+    .project-img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s ease; }
+    .project-link:hover .project-img { transform:scale(1.06); }
+    .project-body { padding:1.2rem 1.4rem 1.5rem; }
+    .project-tag { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--clay); display:block; margin-bottom:0.5rem; }
+    .project-card h3 { font-family:'Caveat',cursive; font-size:1.5rem; font-weight:700; color:var(--dark-sage); margin-bottom:0.5rem; }
+    .project-card p { font-family:'Special Elite',monospace; font-size:0.78rem; color:var(--black); line-height:1.6; opacity:0.8; }
 
-/* TEXT */
-.overlay-text h3 {
-    color: var(--clay);
-    font-size: 1rem;
-    margin-bottom: 5px;
-}
+    /* PORTFOLIO */
+    #portfolio-section { background:var(--dark-sage); padding:5rem 3rem; position:relative; overflow:hidden; }
+    #portfolio-section::before { content:''; position:absolute; top:-2px; left:0; right:0; height:55px; background:var(--cream2); clip-path:polygon(0% 0%,3% 80%,6% 20%,9% 70%,12% 10%,15% 60%,18% 85%,21% 30%,24% 65%,27% 15%,30% 55%,33% 90%,36% 25%,39% 60%,42% 80%,45% 20%,48% 55%,51% 85%,54% 30%,57% 70%,60% 15%,63% 50%,66% 80%,69% 25%,72% 65%,75% 90%,78% 30%,81% 60%,84% 10%,87% 55%,90% 80%,93% 25%,96% 60%,99% 85%,100% 40%,100% 0%); }
+    #portfolio-section .section-label { background:var(--clay); color:var(--white); box-shadow:4px 4px 0 var(--cream); }
+    #portfolio-section .section-label::before { color: var(--white); }
+    .portfolio-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; max-width:1100px; margin:0 auto; }
+    .portfolio-item { position:relative; aspect-ratio:4/5; border:2.5px solid rgba(255,255,255,0.25); overflow:hidden; cursor:none; transition:transform 0.2s ease; }
+    .portfolio-item:nth-child(3n+1){transform:rotate(-1deg)}
+    .portfolio-item:nth-child(3n+2){transform:rotate(1.2deg)}
+    .portfolio-item:nth-child(3n){transform:rotate(-0.5deg)}
+    .portfolio-item:hover { transform:rotate(0deg) scale(1.03); z-index:3; }
+    .portfolio-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s ease; filter:sepia(0.15) saturate(0.85); }
+    .portfolio-item:hover img { transform:scale(1.07); filter:sepia(0) saturate(1.1); }
+    .portfolio-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(61,79,49,0.95) 0%,transparent 55%); display:flex; align-items:flex-end; padding:1rem; opacity:0; transition:opacity 0.3s ease; }
+    .portfolio-item:hover .portfolio-overlay { opacity:1; }
+    .overlay-text h3 { font-family:'Caveat',cursive; font-size:1rem; font-weight:700; color:var(--clay-light); margin-bottom:0.2rem; }
+    .overlay-text p { font-family:'DM Mono',monospace; font-size:0.6rem; color:rgba(249,247,240,0.7); line-height:1.35; }
 
-.overlay-text p {
-    color: var(--cream);
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 0.75rem;
-    line-height: 1.2;
-}
-    </style>
+    /* SPROUT */
+    .sprout-section { background:var(--sage); padding:6rem 2rem 5rem; text-align:center; position:relative; overflow:hidden; }
+    .sprout-section::before { content:''; position:absolute; inset:0; background-image:radial-gradient(rgba(255,255,255,0.25) 1.5px,transparent 1.5px); background-size:20px 20px; }
+    .sprout-section::after { content:''; position:absolute; top:-2px; left:0; right:0; height:55px; background:var(--dark-sage); clip-path:polygon(0% 0%,2% 70%,5% 20%,8% 60%,11% 85%,14% 30%,17% 65%,20% 10%,23% 50%,26% 80%,29% 25%,32% 60%,35% 40%,38% 75%,41% 15%,44% 55%,47% 80%,50% 30%,53% 65%,56% 20%,59% 70%,62% 45%,65% 80%,68% 25%,71% 60%,74% 90%,77% 30%,80% 60%,83% 10%,86% 55%,89% 80%,92% 25%,95% 60%,98% 85%,100% 40%,100% 0%); }
+    .sprout-label { font-family:'Caveat',cursive; font-size:1.3rem; color:var(--dark-sage); display:block; margin-bottom:1rem; position:relative; z-index:1; }
+    #sprout { font-size:5rem; cursor:none; display:inline-block; filter:drop-shadow(4px 5px 0 rgba(61,79,49,0.35)); transition:transform 0.15s cubic-bezier(0.68,-0.55,0.265,1.55); position:relative; z-index:1; }
+    #sprout:hover { transform:scale(1.2) rotate(-8deg); }
+
+    /* FOOTER */
+    footer { background:var(--black); padding:4rem 4rem 2.5rem; display:flex; justify-content:space-between; align-items:center; position:relative; }
+    footer::before { content:''; position:absolute; top:-2px; left:0; right:0; height:50px; background:var(--sage); clip-path:polygon(0% 0%,3% 65%,6% 15%,9% 55%,12% 80%,15% 25%,18% 60%,21% 85%,24% 30%,27% 65%,30% 10%,33% 50%,36% 75%,39% 20%,42% 55%,45% 85%,48% 30%,51% 60%,54% 15%,57% 55%,60% 80%,63% 25%,66% 60%,69% 40%,72% 75%,75% 20%,78% 55%,81% 80%,84% 30%,87% 65%,90% 10%,93% 50%,96% 75%,99% 40%,100% 60%,100% 0%); }
+    .footer-name { font-family:'Abril Fatface',serif; font-size:1.6rem; color:var(--cream); letter-spacing:-0.02em; }
+    .footer-name span { color:var(--clay); }
+    .footer-links { display:flex; gap:2rem; }
+    .footer-links a { font-family:'DM Mono',monospace; font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--sage); text-decoration:none; transition:color 0.2s; cursor:none; }
+    .footer-links a:hover { color:var(--clay); }
+
+    /* REVEAL */
+    .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+    .reveal-delay-1{transition-delay:0.1s}
+    .reveal-delay-2{transition-delay:0.2s}
+    .reveal-delay-3{transition-delay:0.3s}
+    .reveal-delay-4{transition-delay:0.4s}
+    .reveal-delay-5{transition-delay:0.5s}
+
+    @media(max-width:900px){
+      .about-inner{grid-template-columns:1fr}
+      .projects-grid{grid-template-columns:1fr 1fr}
+      .portfolio-grid{grid-template-columns:repeat(2,1fr)}
+      footer{flex-direction:column;gap:1.5rem;padding:2rem;text-align:center}
+    }
+    @media(max-width:600px){
+      .hero-name{font-size:5rem}
+      .projects-grid{grid-template-columns:1fr}
+      .portfolio-grid{grid-template-columns:1fr 1fr}
+      #projects,#portfolio-section{padding:4rem 1.5rem}
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-    <h1 id="name-header" class="scramble-container">
-        <span>e</span><span>l</span><span>l</span><span>a</span>
-        <span class="space">&nbsp;</span>
-        <span>i</span><span>l</span><span>a</span><span>n</span>
-    </h1>
-</header>
+<div class="cursor" id="cursor"></div>
 
-        <main class="card">
-            <h2>hello there! 🌿</h2>
-            <p>> i'm a student at the University of British Columbia in Vancouver, Canada.</p>
-            <p>> i'm majoring in Data Science with a minor in Economics! you can find me on campus destroying a bag of gummy worms in IKB while working on problem sets.</p>
-            <p>> in my free time, i love to go to concerts and discover new cafes. </p>
-            
-            <div class="links">
-                <a href="https://www.linkedin.com/in/ellailan/" target="_blank" class="btn">LINKEDIN</a>
-                <a href="https://github.com/ellailan" target="_blank" class="btn" style="background: var(--clay);">GITHUB</a>
-            </div>
-        </main>
 
-        <section id="projects">
-    <section id="projects">
-    <div class="projects-header">
-        <span>some recent projects!</span>
-    </div>
-    
-    <div class="projects-grid">
-        </div>
+
+<!-- HERO -->
+<section class="hero">
+  <h1 class="hero-name">
+    <span class="first">ella</span>
+    <span class="last">ilan.</span>
+  </h1>
+
+  <div class="hero-tag">welcome!</div>
+  <p class="hero-sub" id="typewriter-sub"></p>
+
+  <div class="hero-links">
+    <a href="https://www.linkedin.com/in/ellailan/" target="_blank" class="stamp-btn">LinkedIn</a>
+    <a href="https://github.com/ellailan" target="_blank" class="stamp-btn clay-btn">GitHub</a>
+  </div>
 </section>
 
-    <div class="projects-grid">
+<!-- ABOUT -->
+<div class="about-section">
+  <div class="about-inner">
+    <div>
+      <div class="section-label" style="transform:rotate(1deg);">hello there!</div>
+      <div class="pinned-card">
+        <div class="pin"></div>
+        <p class="card-body">
+          i'm a student at <strong>UBC</strong> in Vancouver, Canada.<br>
+          majoring in <em>Data Science</em> with a minor in <em>Economics</em>.<br>
+          i'm incoming at <strong>Samsung</strong> this summer, and i previously worked for <strong>UBC's AMS</strong>
+        </p>
+      </div>
+    </div>
+  
+  </div>
+</div>
 
-        <a href="https://github.com/UBC-Solar/data_analysis/blob/localization_with_acceleration/v4/localization_with_acceleration/acceleration.ipynb" target="_blank" class="project-link">
-            <article class="project-card" style="transform: rotate(-1.5deg);">
-                <div class="project-img-placeholder">
-            <img src="assets/radiusofcurve.png" alt="UBC Solar Graph" class="project-img">
-                </div>
-                <h3>UBC Solar</h3>
-                <p>> part of my work for ubc's solar-powered race-car design team, UBC Solar </p>
-                <p>> creating models in python using telemetry data to optimize driving</p>
-            </article>
-        </a>
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">recent projects</div>
+  <div class="projects-grid">
 
-         <a href="ellailan.github.io" target="_blank" class="project-link">
-            <article class="project-card" style="transform: rotate(-1.5deg);">
-                <div class="project-img-placeholder">
-            <img src="mockup.png" alt="This Website" class="project-img">
-                </div>
-                <h3>my website</h3>
-                <p>> how meta! </p>
-                <p>> built and designed this website using HTML and CSS to showcase my projects and portfolio</p>
-            </article>
-        </a>
 
-        <a href="https://github.com/ellailan/student-engagement-survey" target="_blank" class="project-link">
-            <article class="project-card" style="transform: rotate(-1.5deg);">
-                <div class="project-img-placeholder">
-            <img src="assets/likertses.png" alt="SES Graph" class="project-img">
-                </div>
-                <h3>the ses</h3>
-                <p>> part of my work for ubc's student union; rewrote UBC's student engagement survey and analyzed almost 5000 responses!</p>
-            </article>
-        </a>
-
-        <a href="https://github.com/ellailan/dsci100-study-social" target="_blank" class="project-link">
-            <article class="project-card" style="transform: rotate(-1.5deg);">
-                <div class="project-img-placeholder">
-            <img src="assets/studyslides.png" alt="Study Social" class="project-img">
-                </div>
-                <h3>DSCI 100 Review</h3>
-                <p>> a workshop i built and led for students in ubc's intro to dsci course; includes a lecture and worksheet; covers data viz, cleaning, loading, and basic machine learning </p>
-            </article>
-        </a>
-
-        <a href="https://github.com/ellailan/rise-and-decide" target="_blank" class="project-link">
-    <article class="project-card" style="transform: rotate(-0.5deg);">
-        <div class="project-img-placeholder">
-            <img src="assets/decide.png" alt="Rise and Decide Project Screenshot" class="project-img">
+    <a href="https://ellailan.github.io/ubc-solar-sustainability-dashboard/" target="_blank" class="project-link reveal reveal-delay-1">
+      <article class="project-card">
+        <div class="project-img-wrap"><img src="assets/dashboard.png" alt="Sustainability Dashboard" class="project-img"></div>
+        <div class="project-body">
+          <span class="project-tag">javascript · data-viz · sustainability</span>
+          <h3>sustainability dashboard</h3>
+          <p>built a js-powered dashboard comparing the environmental impact of ubc solar's car, brightside, vs a regular gas streetcar.</p>
         </div>
-        <h3>rise-and-decide</h3>
-        <p>> a fun decision-making tool built using AI tools as part of a two-hour hackathon</p>
-    </article>
-</a>
+      </article>
+    </a>
 
-        <a href="https://instagram.com/widsubc" target="_blank" class="project-link">
-            <article class="project-card" style="transform: rotate(-1.5deg);">
-                <div class="project-img-placeholder">
-            <img src="assets/wids.png" alt="WiDS@UBC" class="project-img">
-                </div>
-                <h3>wids-stagram</h3>
-                <p>> creating social media content for wids@ubc and connecting with women in data science across campus</p>
-            </article>
-        </a>
+    <a href="https://github.com/ellailan/student-engagement-survey" target="_blank" class="project-link reveal reveal-delay-2">
+      <article class="project-card">
+        <div class="project-img-wrap"><img src="assets/likertses.png" alt="SES" class="project-img"></div>
+        <div class="project-body">
+          <span class="project-tag">analysis · surveys · policy</span>
+          <h3>the SES</h3>
+          <p>rewrote ubc's student engagement survey + analyzed almost 5000 responses for the student union.</p>
+        </div>
+      </article>
+    </a>
 
-       
+    <a href="https://github.com/ellailan/dsci100-study-social" target="_blank" class="project-link reveal reveal-delay-3">
+      <article class="project-card">
+        <div class="project-img-wrap"><img src="assets/studyslides.png" alt="Study Social" class="project-img"></div>
+        <div class="project-body">
+          <span class="project-tag">teaching · ml · data-viz</span>
+          <h3>DSCI 100 Review</h3>
+          <p>a workshop i built and led covering data viz, cleaning, loading + basic K-NN clustering for intro dsci students.</p>
+        </div>
+      </article>
+    </a>
 
-    </div>
+        <a href="https://github.com/UBC-Solar/data_analysis/blob/localization_with_acceleration/v4/localization_with_acceleration/acceleration.ipynb" target="_blank" class="project-link reveal">
+      <article class="project-card">
+        <div class="project-img-wrap"><img src="assets/radiusofcurve.png" alt="UBC Solar" class="project-img"></div>
+        <div class="project-body">
+          <span class="project-tag">python · telemetry · modelling</span>
+          <h3>UBC Solar</h3>
+          <p>creating models in python using telemetry data to optimize driving for ubc's solar-powered race-car team.</p>
+        </div>
+      </article>
+    </a>
 
-    <section id="portfolio">
-    <div class="projects-header">
-        <span>my visual portfolio</span>
-    </div>
 
-    
+    <a href="https://ellailan.github.io" target="_blank" class="project-link reveal reveal-delay-1">
+      <article class="project-card">
+        <div class="project-img-wrap"><img src="mockup.png" alt="This Website" class="project-img"></div>
+        <div class="project-body">
+          <span class="project-tag">html · css · design</span>
+          <h3>my website</h3>
+          <p>how meta! built and designed this site to showcase my projects. yes, you're on it right now.</p>
+        </div>
+      </article>
+    </a>
+
+    <a href="https://github.com/ellailan/rise-and-decide" target="_blank" class="project-link reveal reveal-delay-4">
+      <article class="project-card">
+        <div class="project-img-wrap"><img src="assets/decide.png" alt="Rise and Decide" class="project-img"></div>
+        <div class="project-body">
+          <span class="project-tag">ai · hackathon · 2hrs</span>
+          <h3>rise-and-decide</h3>
+          <p>a fun decision-making tool built with ai, made in a two-hour hackathon sprint.</p>
+        </div>
+      </article>
+    </a>
+
+    <a href="https://instagram.com/widsubc" target="_blank" class="project-link reveal reveal-delay-5">
+      <article class="project-card">
+        <div class="project-img-wrap"><img src="assets/wids.png" alt="WiDS" class="project-img"></div>
+        <div class="project-body">
+          <span class="project-tag">community · social · content</span>
+          <h3>wids-stagram</h3>
+          <p>creating social media content for wids@ubc + connecting women in data science across campus.</p>
+        </div>
+      </article>
+    </a>
+
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio-section">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-label" style="transform:rotate(0.8deg);margin-top:2rem;">visual portfolio</div>
     <div class="portfolio-grid">
-        <div class="portfolio-item">
-            <img src="portfolio/dsci100.png" alt="DSCI 100 Study Social">
-            <div class="portfolio-overlay">
-                <div class="overlay-text">
-                    <h3>DSCI100 Study Social</h3>
-                    <p>An Instagram post for WiDS@UBC which brought in 30k views and 100+ students for a midterm review session for DSCI100: Introduction to Data Science. </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="portfolio-item">
-            <img src="portfolio/youcode.png" alt="YouCode brandkit">
-            <div class="portfolio-overlay">
-                <div class="overlay-text">
-                    <h3>YouCode 2026 Brand Kit</h3>
-                    <p>A brand kit, mascot, and assets for UBC's YouCode hackathon's promotional material. Designed in Figma. </p>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="portfolio-item">
-            <img src="portfolio/microsoft.png" alt="Mircosoft Office Tour!">
-            <div class="portfolio-overlay">
-                <div class="overlay-text">
-                    <h3>Microsoft Office Tour</h3>
-                    <p>An Instagram post for WiDS@UBC, in collaboration with Microsoft Vancouver to promote an exclusive office tour. 28k views.</p>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="portfolio-item">
-            <img src="portfolio/tcf.png" alt="Technical Career Fair">
-            <div class="portfolio-overlay">
-                <div class="overlay-text">
-                    <h3>UBC's Technical Career Fair</h3>
-                    <p>An Instagram post for WiDS@UBC to promote our annual career fair!</p>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="portfolio-item">
-            <img src="portfolio/imagineday.png" alt="Imagine Day">
-            <div class="portfolio-overlay">
-                <div class="overlay-text">
-                    <h3>WiDS at Imagine Day 2025</h3>
-                    <p>An Instagram post for WiDS@UBC to promote our booth at UBC's annual welcome-back fair, Imagine Day. 25k views.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="portfolio-item">
-            <img src="portfolio/alumnight.png" alt="AlumNight">
-            <div class="portfolio-overlay">
-                <div class="overlay-text">
-                    <h3>AlumNight 2025</h3>
-                    <p>An Instagram post for WiDS@UBC to promote our flagship alumni Networking event, AlumNight.</p>
-                </div>
-            </div>
-        </div>
-
-          <div class="portfolio-item">
-            <img src="portfolio/cancwic.png" alt="CAN-CWIC">
-            <div class="portfolio-overlay">
-                <div class="overlay-text">
-                    <h3>CAN-CWIC 2025</h3>
-                    <p>An Instagram post for WiDS@UBC to promote the Canadian Women in Computing Conference.</p>
-                </div>
-            </div>
-        </div>
-        
-
-
-        <div class="portfolio-item">
-            <img src="portfolio/hoka.png" alt="WiDS@UBC x HOKA Run Club">
-            <div class="portfolio-overlay">
-                <div class="overlay-text">
-                    <h3>WiDS@UBC x HOKA Run Club</h3>
-                    <p>An Instagram post for WiDS@UBC and HOKA to promote our collaboration on a run club event. 31k views.</p>
-                </div>
-            </div>
-        </div>
-
-        
+      <div class="portfolio-item reveal"><img src="portfolio/dsci100.png" alt="DSCI 100"><div class="portfolio-overlay"><div class="overlay-text"><h3>DSCI100 Study Social</h3><p>30k views · 100+ students · WiDS@UBC</p></div></div></div>
+      <div class="portfolio-item reveal reveal-delay-1"><img src="portfolio/youcode.png" alt="YouCode"><div class="portfolio-overlay"><div class="overlay-text"><h3>YouCode 2026 Brand Kit</h3><p>brand kit + mascot · designed in Figma</p></div></div></div>
+      <div class="portfolio-item reveal reveal-delay-2"><img src="portfolio/microsoft.png" alt="Microsoft"><div class="portfolio-overlay"><div class="overlay-text"><h3>Microsoft Office Tour</h3><p>WiDS@UBC x Microsoft Vancouver · 28k views</p></div></div></div>
+      <div class="portfolio-item reveal reveal-delay-3"><img src="portfolio/tcf.png" alt="TCF"><div class="portfolio-overlay"><div class="overlay-text"><h3>Technical Career Fair</h3><p>annual career fair promo · WiDS@UBC</p></div></div></div>
+      <div class="portfolio-item reveal reveal-delay-4"><img src="portfolio/imagineday.png" alt="Imagine Day"><div class="portfolio-overlay"><div class="overlay-text"><h3>WiDS at Imagine Day 2025</h3><p>welcome-back fair · 25k views</p></div></div></div>
+      <div class="portfolio-item reveal reveal-delay-5"><img src="portfolio/alumnight.png" alt="AlumNight"><div class="portfolio-overlay"><div class="overlay-text"><h3>AlumNight 2025</h3><p>flagship alumni networking event</p></div></div></div>
+      <div class="portfolio-item reveal"><img src="portfolio/cancwic.png" alt="CAN-CWIC"><div class="portfolio-overlay"><div class="overlay-text"><h3>CAN-CWIC 2025</h3><p>Canadian Women in Computing Conference</p></div></div></div>
+      <div class="portfolio-item reveal reveal-delay-1"><img src="portfolio/hoka.png" alt="HOKA"><div class="portfolio-overlay"><div class="overlay-text"><h3>WiDS@UBC x HOKA Run Club</h3><p>run club collab · 31k views</p></div></div></div>
     </div>
+  </div>
 </section>
 
-</section>
+<!-- SPROUT -->
+<div class="sprout-section">
+  <span class="sprout-label">🌱 go on. click it.</span>
+  <div id="sprout">🌱</div>
+</div>
 
-        <div id="interactive-area">
-            <div class="wiggle" id="sprout">🌱</div>
-            <p style="font-family: monospace; color: var(--dark-sage); font-weight: bold; margin-top: 20px;">[ CLICK THE SPROUT ]</p>
-        </div>
-    </div>
+<script>
+  // CURSOR
+  const cursor = document.getElementById('cursor');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
 
-    <script>
-        const sprout = document.getElementById('sprout');
-        const emojis = ['🍀', '💗', '🪴', '💚', '🌸', '🌷'];
+    // DOT TRAIL
+    const dot = document.createElement('div');
+    const size = 6 + Math.random() * 6;
+    const colors = ['#e08b8e','#9CAF88','#f5c8ca','#C4D4B5','#D4A843'];
+    Object.assign(dot.style, {
+      position: 'fixed',
+      left: e.clientX + 'px',
+      top: e.clientY + 'px',
+      width: size + 'px',
+      height: size + 'px',
+      borderRadius: '50%',
+      background: colors[Math.floor(Math.random() * colors.length)],
+      pointerEvents: 'none',
+      zIndex: '99998',
+      transform: 'translate(-50%, -50%)',
+      opacity: '0.85',
+      transition: 'opacity 0.6s ease, transform 0.6s ease',
+    });
+    document.body.appendChild(dot);
+    requestAnimationFrame(() => {
+      dot.style.opacity = '0';
+      dot.style.transform = `translate(-50%, -50%) scale(0.2)`;
+    });
+    setTimeout(() => dot.remove(), 650);
+  });
 
-        sprout.addEventListener('click', () => {
-            // Chaotic wiggle
-            sprout.style.transform = `scale(1.3) rotate(${Math.random() * 40 - 20}deg)`;
-            
-            const leaf = document.createElement('span');
-            leaf.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-            leaf.style.position = 'fixed';
-            leaf.style.left = Math.random() * 100 + 'vw';
-            leaf.style.top = '100vh';
-            leaf.style.fontSize = '3rem';
-            leaf.style.transition = 'all 2s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-            leaf.style.zIndex = '1000';
-            document.body.appendChild(leaf);
+  document.querySelectorAll('a,button,#sprout,.portfolio-item,.fact-chip').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+  });
 
-            setTimeout(() => {
-                leaf.style.top = '-10vh';
-                leaf.style.transform = `rotate(${Math.random() * 720}deg)`;
-            }, 50);
+  // TYPEWRITER
+  const lines = ['ubc · vancouver · canada','data science + economics','ikb dweller & gummy worm enjoyer', 'caffeine addict and concert frequenter'];
+  let li=0,ci=0,del=false;
+  const sub = document.getElementById('typewriter-sub');
+  function type(){
+    const line=lines[li];
+    if(!del){ci++;sub.innerHTML=line.slice(0,ci)+'<span class="cursor-blink"></span>';
+      if(ci===line.length){del=true;setTimeout(type,2200);return;}}
+    else{ci--;sub.innerHTML=line.slice(0,ci)+'<span class="cursor-blink"></span>';
+      if(ci===0){del=false;li=(li+1)%lines.length;}}
+    setTimeout(type,del?38:68);
+  }
+  setTimeout(type,800);
 
-            setTimeout(() => leaf.remove(), 2000);
-        });
-    </script>
+  // SPROUT
+  const sprout=document.getElementById('sprout');
+  const emojis=['🍀','💗','🪴','💚','🌸','🌷','🫧','🍃','✨'];
+  sprout.addEventListener('click',()=>{
+    sprout.style.transform=`scale(1.4) rotate(${Math.random()*40-20}deg)`;
+    setTimeout(()=>{sprout.style.transform='';},250);
+    for(let i=0;i<5;i++){
+      setTimeout(()=>{
+        const leaf=document.createElement('span');
+        leaf.innerText=emojis[Math.floor(Math.random()*emojis.length)];
+        Object.assign(leaf.style,{position:'fixed',left:Math.random()*100+'vw',top:'100vh',fontSize:(1.5+Math.random()*2.5)+'rem',transition:`all ${1.8+Math.random()}s cubic-bezier(0.175,0.885,0.32,1.275)`,zIndex:'9999',pointerEvents:'none',userSelect:'none'});
+        document.body.appendChild(leaf);
+        setTimeout(()=>{leaf.style.top='-15vh';leaf.style.transform=`rotate(${Math.random()*720-360}deg) scale(${0.5+Math.random()})`;},50);
+        setTimeout(()=>leaf.remove(),3000);
+      },i*90);
+    }
+  });
+
+  // SCROLL REVEAL
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
 </body>
 </html>

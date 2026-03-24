@@ -6,7 +6,7 @@
   <title>ella ilan</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌿</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Abril+Fatface&family=Special+Elite&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Abril+Fatface&family=Special+Elite&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --sage: #9CAF88;
@@ -51,7 +51,7 @@
     .hero-name { font-family:'Abril Fatface',serif; font-size:clamp(5rem,15vw,10rem); color:var(--dark-sage); line-height:0.88; text-align:center; position:relative; z-index:2; letter-spacing:-0.02em; }
     .hero-name .last { color:var(--dark-sage); display:block; }
     .hero-name .first { display:block; position:relative; }
-    .hero-tag { display:inline-block; background:var(--clay); color:var(--white); font-family:'Caveat',cursive; font-size:1.4rem; font-weight:700; padding:0.35rem 1.4rem; transform:rotate(-2.5deg); position:relative; z-index:3; margin-top:1.8rem; box-shadow:3px 3px 0 var(--dark-sage); }
+    .hero-tag { display:inline-block; background:var(--clay); color:var(--white); font-family:'Gochi Hand',cursive; font-size:1.4rem; font-weight:700; padding:0.35rem 1.4rem; transform:rotate(-2.5deg); position:relative; z-index:3; margin-top:1.8rem; box-shadow:3px 3px 0 var(--dark-sage); }
     .hero-sub { font-family:'DM Mono',monospace; font-size:0.78rem; color:var(--dark-sage); text-align:center; margin-top:1.4rem; letter-spacing:0.08em; position:relative; z-index:2; opacity:0.8; min-height:1.2em; }
     .cursor-blink { display:inline-block; width:2px; height:1em; background:var(--clay); vertical-align:middle; animation:blink 1s step-end infinite; margin-left:2px; }
     @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
@@ -69,12 +69,12 @@
     .fun-facts { display:none; }
     .pin { position:absolute; top:-14px; left:50%; transform:translateX(-50%); width:22px; height:22px; background:var(--clay); border-radius:50%; border:2px solid var(--dark-sage); box-shadow:0 4px 6px rgba(0,0,0,0.2); z-index:2; }
     .pin::after { content:''; position:absolute; bottom:-20px; left:50%; transform:translateX(-50%); width:2px; height:20px; background:linear-gradient(to bottom,var(--dark-sage),transparent); }
-    .card-label { font-family:'Caveat',cursive; font-size:0.85rem; color:var(--sage); margin-bottom:0.8rem; display:block; }
-    .card-body { font-family:'Caveat',cursive; font-size:1.25rem; color:var(--black); line-height:1.55; }
+    .card-label { font-family:'Gochi Hand',cursive; font-size:0.85rem; color:var(--sage); margin-bottom:0.8rem; display:block; }
+    .card-body { font-family:'Gochi Hand',cursive; font-size:1.25rem; color:var(--black); line-height:1.55; }
     .card-body strong { color:var(--dark-sage); }
     .card-body em { color:var(--clay); font-style:normal; text-decoration:underline wavy var(--clay-light); }
     .pinned-card::before { content:''; position:absolute; inset:0; background:repeating-linear-gradient(to bottom,transparent 0px,transparent 27px,rgba(156,175,136,0.2) 27px,rgba(156,175,136,0.2) 28px); pointer-events:none; }
-    .section-label { display:inline-flex; align-items:center; gap:0.8rem; background:var(--dark-sage); color:var(--cream); font-family:'Caveat',cursive; font-size:1.8rem; font-weight:700; padding:0.3rem 1.5rem 0.3rem 1rem; margin-bottom:3rem; position:relative; transform:rotate(-1deg); box-shadow:4px 4px 0 var(--black); }
+    .section-label { display:inline-flex; align-items:center; gap:0.8rem; background:var(--dark-sage); color:var(--cream); font-family:'Gochi Hand',cursive; font-size:1.8rem; font-weight:700; padding:0.3rem 1.5rem 0.3rem 1rem; margin-bottom:3rem; position:relative; transform:rotate(-1deg); box-shadow:4px 4px 0 var(--black); }
     .section-label::before { content:'✦'; color:var(--clay); }
 
     /* PROJECTS */
@@ -93,7 +93,7 @@
     .project-link:hover .project-img { transform:scale(1.06); }
     .project-body { padding:1.2rem 1.4rem 1.5rem; }
     .project-tag { font-family:'DM Mono',monospace; font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--clay); display:block; margin-bottom:0.5rem; }
-    .project-card h3 { font-family:'Caveat',cursive; font-size:1.5rem; font-weight:700; color:var(--dark-sage); margin-bottom:0.5rem; }
+    .project-card h3 { font-family:'Gochi Hand',cursive; font-size:1.5rem; font-weight:700; color:var(--dark-sage); margin-bottom:0.5rem; }
     .project-card p { font-family:'Special Elite',monospace; font-size:0.78rem; color:var(--black); line-height:1.6; opacity:0.8; }
 
     /* PORTFOLIO */
@@ -101,24 +101,52 @@
     #portfolio-section::before { content:''; position:absolute; top:-2px; left:0; right:0; height:55px; background:var(--cream2); clip-path:polygon(0% 0%,3% 80%,6% 20%,9% 70%,12% 10%,15% 60%,18% 85%,21% 30%,24% 65%,27% 15%,30% 55%,33% 90%,36% 25%,39% 60%,42% 80%,45% 20%,48% 55%,51% 85%,54% 30%,57% 70%,60% 15%,63% 50%,66% 80%,69% 25%,72% 65%,75% 90%,78% 30%,81% 60%,84% 10%,87% 55%,90% 80%,93% 25%,96% 60%,99% 85%,100% 40%,100% 0%); }
     #portfolio-section .section-label { background:var(--clay); color:var(--white); box-shadow:4px 4px 0 var(--cream); }
     #portfolio-section .section-label::before { color: var(--white); }
-    .portfolio-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; max-width:1100px; margin:0 auto; }
-    .portfolio-item { position:relative; aspect-ratio:4/5; border:2.5px solid rgba(255,255,255,0.25); overflow:hidden; cursor:none; transition:transform 0.2s ease; }
+    /* Hide custom cursor on touch devices */
+    @media (hover: none) and (pointer: coarse) {
+      body { cursor: auto !important; }
+      .cursor { display: none !important; }
+      .stamp-btn, .project-link, .portfolio-item, #sprout, .footer-links a { cursor: auto !important; }
+    }
+
+    /* PORTFOLIO MARQUEE */
+    .portfolio-marquee-wrapper { overflow: hidden; width: 100%; position: relative; padding: 1rem 0 2rem; }
+    .portfolio-marquee-track {
+      display: flex;
+      gap: 1.2rem;
+      width: max-content;
+      animation: marquee-scroll 32s linear infinite;
+    }
+    .portfolio-marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .portfolio-item {
+      position: relative;
+      width: 220px;
+      flex-shrink: 0;
+      aspect-ratio: 4/5;
+      border: 2.5px solid rgba(255,255,255,0.25);
+      overflow: hidden;
+      cursor: none;
+      transition: transform 0.2s ease;
+    }
     .portfolio-item:nth-child(3n+1){transform:rotate(-1deg)}
     .portfolio-item:nth-child(3n+2){transform:rotate(1.2deg)}
     .portfolio-item:nth-child(3n){transform:rotate(-0.5deg)}
     .portfolio-item:hover { transform:rotate(0deg) scale(1.03); z-index:3; }
-    .portfolio-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s ease; filter:sepia(0.15) saturate(0.85); }
+    .portfolio-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s ease; }
     .portfolio-item:hover img { transform:scale(1.07); filter:sepia(0) saturate(1.1); }
     .portfolio-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(61,79,49,0.95) 0%,transparent 55%); display:flex; align-items:flex-end; padding:1rem; opacity:0; transition:opacity 0.3s ease; }
     .portfolio-item:hover .portfolio-overlay { opacity:1; }
-    .overlay-text h3 { font-family:'Caveat',cursive; font-size:1rem; font-weight:700; color:var(--clay-light); margin-bottom:0.2rem; }
+    .overlay-text h3 { font-family:'Gochi Hand',cursive; font-size:1rem; font-weight:700; color:var(--clay-light); margin-bottom:0.2rem; }
     .overlay-text p { font-family:'DM Mono',monospace; font-size:0.6rem; color:rgba(249,247,240,0.7); line-height:1.35; }
 
     /* SPROUT */
     .sprout-section { background:var(--sage); padding:6rem 2rem 5rem; text-align:center; position:relative; overflow:hidden; }
     .sprout-section::before { content:''; position:absolute; inset:0; background-image:radial-gradient(rgba(255,255,255,0.25) 1.5px,transparent 1.5px); background-size:20px 20px; }
     .sprout-section::after { content:''; position:absolute; top:-2px; left:0; right:0; height:55px; background:var(--dark-sage); clip-path:polygon(0% 0%,2% 70%,5% 20%,8% 60%,11% 85%,14% 30%,17% 65%,20% 10%,23% 50%,26% 80%,29% 25%,32% 60%,35% 40%,38% 75%,41% 15%,44% 55%,47% 80%,50% 30%,53% 65%,56% 20%,59% 70%,62% 45%,65% 80%,68% 25%,71% 60%,74% 90%,77% 30%,80% 60%,83% 10%,86% 55%,89% 80%,92% 25%,95% 60%,98% 85%,100% 40%,100% 0%); }
-    .sprout-label { font-family:'Caveat',cursive; font-size:1.3rem; color:var(--dark-sage); display:block; margin-bottom:1rem; position:relative; z-index:1; }
+    .sprout-label { font-family:'Gochi Hand',cursive; font-size:1.3rem; color:var(--dark-sage); display:block; margin-bottom:1rem; position:relative; z-index:1; }
     #sprout { font-size:5rem; cursor:none; display:inline-block; filter:drop-shadow(4px 5px 0 rgba(61,79,49,0.35)); transition:transform 0.15s cubic-bezier(0.68,-0.55,0.265,1.55); position:relative; z-index:1; }
     #sprout:hover { transform:scale(1.2) rotate(-8deg); }
 
@@ -143,14 +171,13 @@
     @media(max-width:900px){
       .about-inner{grid-template-columns:1fr}
       .projects-grid{grid-template-columns:1fr 1fr}
-      .portfolio-grid{grid-template-columns:repeat(2,1fr)}
       footer{flex-direction:column;gap:1.5rem;padding:2rem;text-align:center}
     }
     @media(max-width:600px){
       .hero-name{font-size:5rem}
       .projects-grid{grid-template-columns:1fr}
-      .portfolio-grid{grid-template-columns:1fr 1fr}
       #projects,#portfolio-section{padding:4rem 1.5rem}
+      .portfolio-item { width: 160px; }
     }
   </style>
 </head>
@@ -167,7 +194,7 @@
     <span class="last">ilan.</span>
   </h1>
 
-  <div class="hero-tag">welcome!</div>
+  <div class="hero-tag">Welcome!</div>
   <p class="hero-sub" id="typewriter-sub"></p>
 
   <div class="hero-links">
@@ -180,13 +207,13 @@
 <div class="about-section">
   <div class="about-inner">
     <div>
-      <div class="section-label" style="transform:rotate(1deg);">hello there!</div>
+      <div class="section-label" style="transform:rotate(1deg);">Hello There!</div>
       <div class="pinned-card">
         <div class="pin"></div>
         <p class="card-body">
-          i'm a student at <strong>UBC</strong> in Vancouver, Canada.<br>
-          majoring in <em>Data Science</em> with a minor in <em>Economics</em>.<br>
-          i'm incoming at <strong>Samsung</strong> this summer, and i previously worked for <strong>UBC's AMS</strong>
+          I'm a student at <strong>UBC</strong> in Vancouver, Canada.<br>
+          Majoring in <em>Data Science</em> with a minor in <em>Economics</em>.<br>
+          I'm incoming at <strong>Samsung</strong> this summer, and I previously worked for <strong>UBC's AMS</strong>
         </p>
       </div>
     </div>
@@ -196,7 +223,7 @@
 
 <!-- PROJECTS -->
 <section id="projects">
-  <div class="section-label">recent projects</div>
+  <div class="section-label">Recent Projects</div>
   <div class="projects-grid">
 
 
@@ -205,8 +232,8 @@
         <div class="project-img-wrap"><img src="assets/dashboard.png" alt="Sustainability Dashboard" class="project-img"></div>
         <div class="project-body">
           <span class="project-tag">javascript · data-viz · sustainability</span>
-          <h3>sustainability dashboard</h3>
-          <p>built a js-powered dashboard comparing the environmental impact of ubc solar's car, brightside, vs a regular gas streetcar.</p>
+          <h3>Sustainability Dashboard</h3>
+          <p>Built a JS-powered dashboard comparing the environmental impact of UBC Solar's car, Brightside, vs a regular gas streetcar.</p>
         </div>
       </article>
     </a>
@@ -216,8 +243,8 @@
         <div class="project-img-wrap"><img src="assets/likertses.png" alt="SES" class="project-img"></div>
         <div class="project-body">
           <span class="project-tag">analysis · surveys · policy</span>
-          <h3>the SES</h3>
-          <p>rewrote ubc's student engagement survey + analyzed almost 5000 responses for the student union.</p>
+          <h3>The SES</h3>
+          <p>Rewrote UBC's Student Engagement Survey + analyzed almost 5000 responses for the student union.</p>
         </div>
       </article>
     </a>
@@ -228,18 +255,19 @@
         <div class="project-body">
           <span class="project-tag">teaching · ml · data-viz</span>
           <h3>DSCI 100 Review</h3>
-          <p>a workshop i built and led covering data viz, cleaning, loading + basic K-NN clustering for intro dsci students.</p>
+          <p>A workshop I built and led covering data viz, cleaning, loading + basic K-NN clustering for intro DSCI students.</p>
         </div>
       </article>
     </a>
 
-        <a href="https://github.com/UBC-Solar/data_analysis/blob/localization_with_acceleration/v4/localization_with_acceleration/acceleration.ipynb" target="_blank" class="project-link reveal">
+        <a href="https://github.com/UBC-Solar/data_analysis/tree/main" target="_blank" class="project-link reveal">
       <article class="project-card">
         <div class="project-img-wrap"><img src="assets/radiusofcurve.png" alt="UBC Solar" class="project-img"></div>
         <div class="project-body">
           <span class="project-tag">python · telemetry · modelling</span>
-          <h3>UBC Solar</h3>
-          <p>creating models in python using telemetry data to optimize driving for ubc's solar-powered race-car team.</p>
+          <h3>Brightside Data Analysis</h3>
+          <p>Part of work for UBC's solar-powered race-car team, UBC Solar!</p>
+          <p>Creating models in Python using telemetry data to optimize driving.</p>
         </div>
       </article>
     </a>
@@ -250,8 +278,8 @@
         <div class="project-img-wrap"><img src="mockup.png" alt="This Website" class="project-img"></div>
         <div class="project-body">
           <span class="project-tag">html · css · design</span>
-          <h3>my website</h3>
-          <p>how meta! built and designed this site to showcase my projects. yes, you're on it right now.</p>
+          <h3>My Website</h3>
+          <p>How meta! Built and designed this site to showcase my projects. Yes, you're on it right now.</p>
         </div>
       </article>
     </a>
@@ -261,8 +289,8 @@
         <div class="project-img-wrap"><img src="assets/decide.png" alt="Rise and Decide" class="project-img"></div>
         <div class="project-body">
           <span class="project-tag">js · hackathon · apis</span>
-          <h3>rise-and-decide</h3>
-          <p>a fun decision-making tool built with ai, made in a two-hour hackathon sprint. uses real-time weather data</p>
+          <h3>Rise-and-Decide</h3>
+          <p>A fun decision-making tool built with AI, made in a two-hour hackathon sprint. Uses real-time weather data.</p>
         </div>
       </article>
     </a>
@@ -273,7 +301,7 @@
         <div class="project-body">
           <span class="project-tag">marketing · social media · design</span>
           <h3>wids-stagram</h3>
-          <p>creating social media content for wids@ubc + connecting women in data science across campus.</p>
+          <p>Creating social media content for WiDS@UBC + connecting women in data science across campus.</p>
         </div>
       </article>
     </a>
@@ -284,23 +312,34 @@
 <!-- PORTFOLIO -->
 <section id="portfolio-section">
   <div style="max-width:1100px;margin:0 auto;">
-    <div class="section-label" style="transform:rotate(0.8deg);margin-top:2rem;">visual portfolio</div>
-    <div class="portfolio-grid">
-      <div class="portfolio-item reveal"><img src="portfolio/dsci100.png" alt="DSCI 100"><div class="portfolio-overlay"><div class="overlay-text"><h3>DSCI100 Study Social</h3><p>30k views · 100+ students · WiDS@UBC</p></div></div></div>
-      <div class="portfolio-item reveal reveal-delay-1"><img src="portfolio/youcode.png" alt="YouCode"><div class="portfolio-overlay"><div class="overlay-text"><h3>YouCode 2026 Brand Kit</h3><p>brand kit + mascot · designed in Figma</p></div></div></div>
-      <div class="portfolio-item reveal reveal-delay-2"><img src="portfolio/microsoft.png" alt="Microsoft"><div class="portfolio-overlay"><div class="overlay-text"><h3>Microsoft Office Tour</h3><p>WiDS@UBC x Microsoft Vancouver · 28k views</p></div></div></div>
-      <div class="portfolio-item reveal reveal-delay-3"><img src="portfolio/tcf.png" alt="TCF"><div class="portfolio-overlay"><div class="overlay-text"><h3>Technical Career Fair</h3><p>annual career fair promo </p></div></div></div>
-      <div class="portfolio-item reveal reveal-delay-4"><img src="portfolio/imagineday.png" alt="Imagine Day"><div class="portfolio-overlay"><div class="overlay-text"><h3>WiDS at Imagine Day 2025</h3><p>welcome-back fair · 25k views</p></div></div></div>
-      <div class="portfolio-item reveal reveal-delay-5"><img src="portfolio/alumnight.png" alt="AlumNight"><div class="portfolio-overlay"><div class="overlay-text"><h3>AlumNight 2025</h3><p>flagship alumni networking event</p></div></div></div>
-      <div class="portfolio-item reveal"><img src="portfolio/cancwic.png" alt="CAN-CWIC"><div class="portfolio-overlay"><div class="overlay-text"><h3>CAN-CWIC 2025</h3><p>poster for Canadian Women in Computing Conference</p></div></div></div>
-      <div class="portfolio-item reveal reveal-delay-1"><img src="portfolio/hoka.png" alt="HOKA"><div class="portfolio-overlay"><div class="overlay-text"><h3>WiDS@UBC x HOKA Run Club</h3><p>run club collab · 31k views</p></div></div></div>
+    <div class="section-label" style="transform:rotate(0.8deg);margin-top:2rem;">Recent Design Work</div>
+    <div class="portfolio-marquee-wrapper">
+      <div class="portfolio-marquee-track" id="marquee-track">
+        <div class="portfolio-item reveal"><img src="portfolio/dsci100.png" alt="DSCI 100"><div class="portfolio-overlay"><div class="overlay-text"><h3>DSCI100 Study Social</h3><p>30k views · 100+ students · WiDS@UBC</p></div></div></div>
+        <div class="portfolio-item reveal reveal-delay-1"><img src="portfolio/youcode.png" alt="YouCode"><div class="portfolio-overlay"><div class="overlay-text"><h3>YouCode 2026 Brand Kit</h3><p>Brand kit + mascot · Designed in Figma</p></div></div></div>
+        <div class="portfolio-item reveal reveal-delay-2"><img src="portfolio/microsoft.png" alt="Microsoft"><div class="portfolio-overlay"><div class="overlay-text"><h3>Microsoft Office Tour</h3><p>WiDS@UBC x Microsoft Vancouver · 28k views</p></div></div></div>
+        <div class="portfolio-item reveal reveal-delay-3"><img src="portfolio/tcf.png" alt="TCF"><div class="portfolio-overlay"><div class="overlay-text"><h3>Technical Career Fair</h3><p>Annual career fair promo</p></div></div></div>
+        <div class="portfolio-item reveal reveal-delay-4"><img src="portfolio/imagineday.png" alt="Imagine Day"><div class="portfolio-overlay"><div class="overlay-text"><h3>WiDS at Imagine Day 2025</h3><p>Welcome-back fair · 25k views</p></div></div></div>
+        <div class="portfolio-item reveal reveal-delay-5"><img src="portfolio/alumnight.png" alt="AlumNight"><div class="portfolio-overlay"><div class="overlay-text"><h3>AlumNight 2025</h3><p>Flagship alumni networking event</p></div></div></div>
+        <div class="portfolio-item reveal"><img src="portfolio/cancwic.png" alt="CAN-CWIC"><div class="portfolio-overlay"><div class="overlay-text"><h3>CAN-CWIC 2025</h3><p>Poster for Canadian Women in Computing Conference</p></div></div></div>
+        <div class="portfolio-item reveal reveal-delay-1"><img src="portfolio/hoka.png" alt="HOKA"><div class="portfolio-overlay"><div class="overlay-text"><h3>WiDS@UBC x HOKA Run Club</h3><p>Run club collab · 31k views</p></div></div></div>
+        <!-- Duplicated set for seamless loop -->
+        <div class="portfolio-item"><img src="portfolio/dsci100.png" alt="DSCI 100"><div class="portfolio-overlay"><div class="overlay-text"><h3>DSCI100 Study Social</h3><p>30k views · 100+ students · WiDS@UBC</p></div></div></div>
+        <div class="portfolio-item"><img src="portfolio/youcode.png" alt="YouCode"><div class="portfolio-overlay"><div class="overlay-text"><h3>YouCode 2026 Brand Kit</h3><p>Brand kit + mascot · Designed in Figma</p></div></div></div>
+        <div class="portfolio-item"><img src="portfolio/microsoft.png" alt="Microsoft"><div class="portfolio-overlay"><div class="overlay-text"><h3>Microsoft Office Tour</h3><p>WiDS@UBC x Microsoft Vancouver · 28k views</p></div></div></div>
+        <div class="portfolio-item"><img src="portfolio/tcf.png" alt="TCF"><div class="portfolio-overlay"><div class="overlay-text"><h3>Technical Career Fair</h3><p>Annual career fair promo</p></div></div></div>
+        <div class="portfolio-item"><img src="portfolio/imagineday.png" alt="Imagine Day"><div class="portfolio-overlay"><div class="overlay-text"><h3>WiDS at Imagine Day 2025</h3><p>Welcome-back fair · 25k views</p></div></div></div>
+        <div class="portfolio-item"><img src="portfolio/alumnight.png" alt="AlumNight"><div class="portfolio-overlay"><div class="overlay-text"><h3>AlumNight 2025</h3><p>Flagship alumni networking event</p></div></div></div>
+        <div class="portfolio-item"><img src="portfolio/cancwic.png" alt="CAN-CWIC"><div class="portfolio-overlay"><div class="overlay-text"><h3>CAN-CWIC 2025</h3><p>Poster for Canadian Women in Computing Conference</p></div></div></div>
+        <div class="portfolio-item"><img src="portfolio/hoka.png" alt="HOKA"><div class="portfolio-overlay"><div class="overlay-text"><h3>WiDS@UBC x HOKA Run Club</h3><p>Run club collab · 31k views</p></div></div></div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- SPROUT -->
 <div class="sprout-section">
-  <span class="sprout-label">🌱 go on. click it.</span>
+  <span class="sprout-label">🌱 Go on. Click it.</span>
   <div id="sprout">🌱</div>
 </div>
 

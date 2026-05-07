@@ -9,31 +9,32 @@
   <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Abril+Fatface&family=Special+Elite&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --sage: #9CAF88;
-      --dark-sage: #334d2c;
-      --cream: #F5F0E8;
-      --cream2: #EDE8DC;
-      --clay: #e08b8e;
-      --clay-light: #f5c8ca;
-      --mustard: #D4A843;
+      --sage: #8FAE7A;
+      --dark-sage: #2E4728;
+      --cream: #F6F2EA;
+      --cream2: #EEE9DC;
+      --clay: #C97B7E;
+      --clay-light: #F0C4C6;
+      --mustard: #C49A35;
       --white: #FDFCF8;
-      --black: #2A2A2A;
-      --light-sage: #C4D4B5;
-      --pale-sage: #E4EDD9;
+      --black: #252520;
+      --light-sage: #BCCFAA;
+      --pale-sage: #DDE9CE;
+      --warm-stone: #B8A898;
+      --ink: #3A3830;
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior: smooth; }
     body { cursor: none; }
     .cursor {
-      width:18px; height:18px;
-      border:2.5px solid var(--dark-sage);
-      border-radius:50%;
-      position:fixed; pointer-events:none; z-index:99999;
-      transform:translate(-50%,-50%);
-      transition:transform 0.08s, width 0.2s, height 0.2s, background 0.2s;
-      mix-blend-mode:multiply;
+      width: 8px; height: 8px;
+      background: var(--clay);
+      border-radius: 50%;
+      position: fixed; pointer-events: none; z-index: 99999;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
     }
-    .cursor.hovering { width:36px; height:36px; background:rgba(224,139,142,0.3); }
+    .cursor.hovering { width: 14px; height: 14px; background: var(--clay-light); }
     body {
       background-color:var(--cream);
       color:var(--black);
@@ -109,18 +110,49 @@
     }
 
     /* PORTFOLIO MARQUEE */
-    .portfolio-marquee-wrapper { overflow: hidden; width: 100%; position: relative; padding: 1rem 0 2rem; }
+    .portfolio-marquee-wrapper {
+      overflow: hidden; width: 100%; position: relative; padding: 1rem 0 2rem;
+    }
+    /* side fade edges */
+    .portfolio-marquee-wrapper::before,
+    .portfolio-marquee-wrapper::after {
+      content: ''; position: absolute; top: 0; bottom: 0; width: 80px;
+      z-index: 4; pointer-events: none;
+    }
+    .portfolio-marquee-wrapper::before {
+      left: 0;
+      background: linear-gradient(to right, var(--dark-sage) 0%, transparent 100%);
+    }
+    .portfolio-marquee-wrapper::after {
+      right: 0;
+      background: linear-gradient(to left, var(--dark-sage) 0%, transparent 100%);
+    }
     .portfolio-marquee-track {
       display: flex;
       gap: 1.2rem;
       width: max-content;
-      animation: marquee-scroll 32s linear infinite;
+      will-change: transform;
     }
-    .portfolio-marquee-track:hover { animation-play-state: paused; }
-    @keyframes marquee-scroll {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+    /* Ghost side arrows */
+    .marquee-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      z-index: 5; width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: none; border: none; background: none; padding: 0;
+      opacity: 0; transition: opacity 0.4s ease;
     }
+    .portfolio-marquee-wrapper:hover .marquee-arrow { opacity: 1; }
+    .marquee-arrow svg {
+      width: 28px; height: 28px;
+      stroke: rgba(255,255,255,0.55); stroke-width: 1.5;
+      fill: none; transition: stroke 0.2s ease, transform 0.2s ease;
+      filter: drop-shadow(0 0 6px rgba(0,0,0,0.3));
+    }
+    .marquee-arrow:hover svg { stroke: rgba(255,255,255,0.95); }
+    .marquee-arrow-left { left: 14px; }
+    .marquee-arrow-right { right: 14px; }
+    .marquee-arrow-left:hover svg { transform: translateX(-2px); }
+    .marquee-arrow-right:hover svg { transform: translateX(2px); }
     .portfolio-item {
       position: relative;
       width: 220px;
@@ -183,7 +215,7 @@
 </head>
 <body>
 
-<div class="cursor" id="cursor"></div>
+<div class="cursor" id="cursor"><div class="cursor-dot"></div></div>
 
 
 
@@ -213,7 +245,9 @@
         <p class="card-body">
           I'm a student at <strong>UBC</strong> in Vancouver, Canada.<br>
           Majoring in <em>Data Science</em> with a minor in <em>Economics</em>.<br>
-          I'm incoming at <strong>Samsung</strong> this summer, and I previously worked for <strong>UBC's AMS</strong>
+          Currently a <strong>Samsung</strong> co-op as Data &amp; Portal Administrator,
+          <em>VP Marketing</em> at WiDS@UBC, and on Strategy &amp; Simulation at <strong>UBC Solar</strong>.<br>
+          In my free time you'll find me <em>snowboarding</em> or playing <em>electric guitar</em>.
         </p>
       </div>
     </div>
@@ -327,6 +361,12 @@
   <div style="max-width:1100px;margin:0 auto;">
     <div class="section-label" style="transform:rotate(0.8deg);margin-top:2rem;">Recent Design Work</div>
     <div class="portfolio-marquee-wrapper">
+      <button class="marquee-arrow marquee-arrow-left" id="marquee-left" aria-label="Scroll left">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="marquee-arrow marquee-arrow-right" id="marquee-right" aria-label="Scroll right">
+        <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+      </button>
       <div class="portfolio-marquee-track" id="marquee-track">
         <div class="portfolio-item reveal"><img src="portfolio/dsci100.png" alt="DSCI 100"><div class="portfolio-overlay"><div class="overlay-text"><h3>DSCI100 Study Social</h3><p>30k views · 100+ students · WiDS@UBC</p></div></div></div>
         <div class="portfolio-item reveal reveal-delay-1"><img src="portfolio/youcode.png" alt="YouCode"><div class="portfolio-overlay"><div class="overlay-text"><h3>YouCode 2026 Brand Kit</h3><p>Brand kit + mascot · Designed in Figma</p></div></div></div>
@@ -357,16 +397,15 @@
 </div>
 
 <script>
-  // CURSOR
+  // CURSOR — small pink dot at tip + trail
   const cursor = document.getElementById('cursor');
   document.addEventListener('mousemove', e => {
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
-
     // DOT TRAIL
     const dot = document.createElement('div');
-    const size = 6 + Math.random() * 6;
-    const colors = ['#e08b8e','#9CAF88','#f5c8ca','#C4D4B5','#D4A843'];
+    const size = 5 + Math.random() * 7;
+    const colors = ['#C97B7E','#8FAE7A','#F0C4C6','#BCCFAA','#C49A35'];
     Object.assign(dot.style, {
       position: 'fixed',
       left: e.clientX + 'px',
@@ -378,13 +417,13 @@
       pointerEvents: 'none',
       zIndex: '99998',
       transform: 'translate(-50%, -50%)',
-      opacity: '0.85',
+      opacity: '0.8',
       transition: 'opacity 0.6s ease, transform 0.6s ease',
     });
     document.body.appendChild(dot);
     requestAnimationFrame(() => {
       dot.style.opacity = '0';
-      dot.style.transform = `translate(-50%, -50%) scale(0.2)`;
+      dot.style.transform = `translate(-50%, -50%) scale(0.1)`;
     });
     setTimeout(() => dot.remove(), 650);
   });
@@ -425,6 +464,74 @@
       },i*90);
     }
   });
+
+  // MARQUEE — smooth velocity-based scroll
+  (function() {
+    const track = document.getElementById('marquee-track');
+    const leftBtn = document.getElementById('marquee-left');
+    const rightBtn = document.getElementById('marquee-right');
+
+    // Base auto-scroll speed (px/frame at 60fps)
+    const BASE_SPEED = 0.55;
+    // Extra velocity applied while arrow held, decays smoothly
+    let manualVel = 0;
+    const PUSH = 3.2;         // px/frame added when arrow held
+    const DECAY = 0.88;       // per-frame multiplier (friction)
+    const SNAP_THRESH = 0.02; // stop decaying below this
+
+    let pos = 0;
+    let isPaused = false;
+    let activeDir = 0; // -1 left, 0 none, 1 right
+
+    // Compute half-width of the track (one copy) for seamless loop
+    function halfWidth() {
+      return track.scrollWidth / 2;
+    }
+
+    function tick() {
+      if (!isPaused) {
+        pos += BASE_SPEED;
+      }
+
+      // Manual nudge
+      if (activeDir !== 0) {
+        manualVel += activeDir * PUSH;
+      }
+      manualVel *= DECAY;
+      if (Math.abs(manualVel) < SNAP_THRESH) manualVel = 0;
+      pos += manualVel;
+
+      // Seamless loop
+      const hw = halfWidth();
+      if (pos >= hw) pos -= hw;
+      if (pos < 0)  pos += hw;
+
+      track.style.transform = `translateX(${-pos}px)`;
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+
+    // Pause on hover (only auto, not manual)
+    const wrapper = track.closest('.portfolio-marquee-wrapper');
+    wrapper.addEventListener('mouseenter', () => isPaused = true);
+    wrapper.addEventListener('mouseleave', () => { isPaused = false; activeDir = 0; manualVel = 0; });
+
+    // Arrow hold-to-glide
+    function startDir(d) { activeDir = d; }
+    function stopDir()   { activeDir = 0; }
+
+    leftBtn.addEventListener('mousedown',  () => startDir(-1));
+    rightBtn.addEventListener('mousedown', () => startDir(1));
+    document.addEventListener('mouseup',   stopDir);
+    leftBtn.addEventListener('mouseleave', stopDir);
+    rightBtn.addEventListener('mouseleave', stopDir);
+
+    // cursor hovering
+    [leftBtn, rightBtn].forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+    });
+  })();
 
   // SCROLL REVEAL
   const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});

@@ -587,26 +587,6 @@ svg.scatter{margin-top:8px}
   </div>
 </section>
 
-<!-- 10b · STEP 2 -->
-<section class="slide vc" data-theme="cream" data-title="Step 2: Autosuggest Enrichment">
-  <div class="pill rv">Step 2 of 7</div>
-  <h2 class="rv">Use autosuggest to find longer, related searches.</h2>
-  <div class="twin rv">
-    <div class="card"><div class="pin"></div>
-      <span class="lab">Why</span>
-      <p style="font-size:28px">Autosuggest reflects real-time popular queries, but there are long-tail variants that historical Keyword Planner data can miss, especially question-style searches.</p></div>
-    <div class="card"><div class="pin"></div>
-      <span class="lab">How</span>
-      <div class="pt"><span>Hit Google's public autocomplete endpoint directly, no key required</span></div>
-      <div class="pt"><span>Send the seed, then seed+"a" through seed+"z", creating 26 requests</span></div>
-      <div class="pt"><span>~10 suggestions per request, deduplicated against the Ads results</span></div></div>
-  </div>
-  <div class="chiprow rv">
-    <span class="stamp sm">300+ long-tail variants</span>
-    <span class="stamp sm ghost">"protein powder before or after workout"</span>
-    <span class="stamp sm ghost">"protein powder for baking"</span>
-  </div>
-</section>
 
 
 <!-- 8 · THE DECISION -->
@@ -617,7 +597,7 @@ svg.scatter{margin-top:8px}
   <div class="chat" role="group" aria-label="A dialogue between management and me about how to use AI for keyword research">
     <div class="msg them rv">
       <div class="who them"><svg viewBox="0 0 64 64" aria-hidden="true"><circle class="a-bg" cx="32" cy="32" r="32"/><circle class="a-fg" cx="32" cy="25" r="10"/><path class="a-fg" d="M12 56c0-11 9-19 20-19s20 8 20 19z"/></svg><span>Management</span></div>
-      <div class="bub">Why not make the AI agent the research tool? Just ask a chatbot what we should write our blogs about.</div>
+      <div class="bub">Can we make the AI agent the research tool? Just ask a chatbot what we should write our blogs about.</div>
     </div>
     <div class="msg me rv">
       <div class="who me"><svg viewBox="0 0 64 64" aria-hidden="true"><circle class="a-bg" cx="32" cy="32" r="32"/><circle class="a-fg" cx="32" cy="25" r="10"/><path class="a-fg" d="M12 56c0-11 9-19 20-19s20 8 20 19z"/></svg><span>Me</span></div>
@@ -628,7 +608,7 @@ svg.scatter{margin-top:8px}
       <div class="bub">My idea: use AI to help design a traditional machine learning pipeline that turns real data into a verifiable prompt, <em>before</em> an LLM is brought into the loop.</div>
     </div>
     <div class="msg-plain ship rv">
-      <div class="bub-plain">Then I shipped an <em>MVP in two days</em> to prove it.</div>
+      <div class="bub-plain">Then I shipped an <em>MVP in two days</em> to show how it could work.</div>
     </div>
   </div>
 </section>
@@ -677,6 +657,27 @@ svg.scatter{margin-top:8px}
     </div>
   </div>
 
+</section>
+
+<!-- 10b · STEP 2 -->
+<section class="slide vc" data-theme="cream" data-title="Step 2: Autosuggest Enrichment">
+  <div class="pill rv">Step 2 of 7</div>
+  <h2 class="rv">Use autosuggest to find longer, related searches.</h2>
+  <div class="twin rv">
+    <div class="card"><div class="pin"></div>
+      <span class="lab">Why</span>
+      <p style="font-size:28px">Autosuggest reflects real-time popular queries. There are long-tail variants that historical Keyword Planner data can miss, especially question-style searches.</p></div>
+    <div class="card"><div class="pin"></div>
+      <span class="lab">How</span>
+      <div class="pt"><span>Hit Google's public autocomplete endpoint directly, no key required</span></div>
+      <div class="pt"><span>Send the seed, then seed+"a" through seed+"z", creating 26 requests</span></div>
+      <div class="pt"><span>~10 suggestions per request, deduplicated against the Ads results</span></div></div>
+  </div>
+  <div class="chiprow rv">
+    <span class="stamp sm">300+ long-tail variants</span>
+    <span class="stamp sm ghost">"protein powder before or after workout"</span>
+    <span class="stamp sm ghost">"protein powder for baking"</span>
+  </div>
 </section>
 
 <!-- 10c · STEP 3 -->
